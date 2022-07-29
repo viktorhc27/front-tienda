@@ -1,0 +1,54 @@
+.slider {
+    width: 100%;
+
+}
+
+
+
+.carousel-item,
+.carousel-control-prev,
+.carousel-control-next {
+    margin-top: 70px;
+}
+
+#tittle {
+    margin-top: 20px;
+    background-color: rgb(5, 5, 4);
+    color: white
+}
+#catalogo {
+    background: rgb(248, 246, 244)
+}
+
+.productos {
+    display: grid;
+    grid-template-rows: repeat(3, 3fr);
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.tarjeta {
+    text-align: center;
+    border: 1px solid rgb(156, 145, 131);
+}
+
+.tarjeta p {
+    font-size: 30px;
+
+}
+
+.tarjeta .precio {
+    font-size: 30px;
+    color: rgb(170, 113, 38);
+    border-top: 1px solid rgb(170, 113, 38);
+}
+
+.tarjeta img {
+    width: 280px;
+
+}
+
+/* detalles */
+
+.detalles h4 {
+    padding-left: 30px;
+}

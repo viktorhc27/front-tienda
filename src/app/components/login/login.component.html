@@ -1,0 +1,99 @@
+<div id="vc" class="container">
+    <div class="row ">
+        <div class="col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mb-4">Sign in</h4>
+                    <form [formGroup]="form_login" (ngSubmit)="login()">
+                        <div class="mb-3">
+                            <label class="form-label">Correo</label>
+                            <input name="lorem" class="form-control" placeholder="ex. name@gmail.com" type="email"
+                                formControlName="correo">
+                        </div>
+                        <!-- col end.// -->
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <a class="float-end" href="#">Forgot?</a>
+                            <input class="form-control" placeholder="******" type="password" formControlName="password">
+                        </div> <!-- col end.// -->
+                        <button  class="btn w-100 btn-primary" type="submit"> Sign in </button>
+                    </form> <!-- form end.// -->
+                    <p class="text-divider my-4">New to shop?</p>
+                    <a href="#" class="btn w-100 btn-light">Create new accaunt</a>
+                </div> <!-- card-body end.// -->
+            </div> <!-- card end.// -->
+            <!-- ============= COMPONENT LOGIN 1 END.// ============= -->
+        </div> <!-- col end.// -->
+        <div class="col-lg-6 col-md-6">
+            <div class="card mb-4">
+                <article class="card-body">
+                    <h4 class="mb-4">Create accaunt</h4>
+                    <form>
+                        <div class="row gx-3">
+                            <div class="col mb-4"> <label class="form-label">First name</label> <input type="text"
+                                    class="form-control" placeholder=""> </div> <!-- col end.// -->
+                            <div class="col mb-4"> <label class="form-label">Last name</label> <input type="text"
+                                    class="form-control" placeholder=""> </div> <!-- col end.// -->
+                        </div> <!-- row end.// -->
+                        <div class="row">
+                            <div class="col-auto mb-3">
+                                <label class="form-check">
+                                    <input class="form-check-input" type="radio" name="choose_a" checked="">
+                                    <span class="form-check-label"> Buyer
+                                    </span>
+                                </label>
+                            </div> <!-- col end.// -->
+                            <div class="col-auto mb-3">
+                                <label class="form-check"> <input class="form-check-input" type="radio" name="choose_a">
+                                    <span class="form-check-label"> Seller </span>
+                                </label>
+                            </div> <!-- col end.// -->
+                            <div class="col-auto mb-3"> <label class="form-check"> <input class="form-check-input"
+                                        type="radio" name="choose_a"> <span class="form-check-label"> Both </span>
+                                </label> </div> <!-- col end.// -->
+                        </div> <!-- row end.// -->
+                        <div class="row gx-3">
+                            <div class="col mb-3"> <label class="form-label">City</label> <input type="text"
+                                    class="form-control"> </div> <!-- col end.// -->
+                            <div class="col mb-3"> <label class="form-label">Country</label> <select
+                                    class="form-select">
+                                    <option value="none">Choose...</option>
+                                    <option value="uz">Uzbekistan</option>
+                                    <option value="ru">Russia</option>
+                                    <option selected="">United States</option>
+                                    <option value="in">India</option>
+                                    <option value="af">Afganistan</option>
+                                </select> </div> <!-- col end.// -->
+                            <div class="col-12 mb-3"> <label class="form-label">Address</label> <input type="text"
+                                    class="form-control" placeholder=""> </div> <!-- col end.// -->
+                            <div class="col-6 mb-3"> <label class="form-label">Email</label> <input type="email"
+                                    class="form-control" placeholder=""> <small class="form-text">We'll never share your
+                                    email</small> </div> <!-- col end.// -->
+                            <div class="col-6 mb-3"> <label class="form-label">Phone</label>
+                                <div class="input-group"> <select class="form-select" style="max-width: 120px">
+                                        <option value="us">US +1 </option>
+                                        <option value="uz">UZ +998</option>
+                                        <option value="ru">RU +72 </option>
+                                    </select> <input type="email" class="form-control" placeholder=""> </div>
+                            </div> <!-- col end.// -->
+                            <div class="col mb-3"> <label class="form-label">Create password</label> <input
+                                    class="form-control" type="password"> </div> <!-- col end.// -->
+                            <div class="col mb-3"> <label class="form-label">Repeat password</label> <input
+                                    class="form-control" type="password"> </div> <!-- col end.// -->
+                        </div> <!-- row end.// -->
+                        <div class="row mt-3 mb-4 align-items-center">
+                            <div class="col-auto"> <button class="btn btn-primary" type="button">Register now</button>
+                            </div>
+                            <div class="col"> <label class="form-check me-auto"> <input class="form-check-input"
+                                        type="checkbox" value=""> <span class="form-check-label"> I agree with Terms and
+                                        Conditions </span> </label> </div>
+                        </div>
+                    </form> <!-- form end.// -->
+                    <hr>
+                    <p class="mb-0">Already have an account? <a href="#">Sign in</a></p>
+                </article> <!-- card-body end .// -->
+            </div>
+        </div> <!-- col end.// -->
+    </div> <!-- row end.// -->
+
+</div>

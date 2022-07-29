@@ -1,0 +1,102 @@
+<div id="vc" class="container">
+
+    <div class="row">
+        <div class="col-md-6">
+
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3 input-group">
+                <span class="input-group-text">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input type="text" class="form-control" name="lorem" placeholder="Search" [(ngModel)]="term">
+            </div>
+        </div>
+
+        <aside class="col-lg-3 col-sm-12 d-lg-block">
+            <!-- COMPONENTS SIDEBAR -->
+            <div class="card">
+                <article class="filter-group">
+                    <header class="card-header"> <a href="#" class="title" data-bs-toggle="collapse"
+                            data-bs-target="#collapse_aside1"> <i class="icon-control fa fa-chevron-down"></i>
+                            Categories </a> </header>
+                    <div class="collapse show" id="collapse_aside1">
+                        <div class="card-body">
+                            <ul class="list-menu">
+                                <li><a href="#">Electronics </a></li>
+                                <li><a href="#">Watches </a></li>
+                                <li><a href="#">Cinema </a></li>
+                                <li><a href="#">Clothes </a></li>
+                                <li><a href="#">Home items </a></li>
+                                <li><a href="#">Smartwatches </a></li>
+                            </ul>
+                        </div> <!-- card-body.// -->
+                    </div>
+                </article> <!-- filter-group // -->
+                <article class="filter-group">
+                    <header class="card-header">
+                        <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside2">
+                            <i class="icon-control fa fa-chevron-down"></i>Price </a>
+                    </header>
+                    <div class="collapse " id="collapse_aside2">
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-6"> <label class="form-label">Min</label> <input class="form-control"
+                                        placeholder="$0" type="number"> </div>
+                                <!-- col end.// -->
+                                <div class="col-6"> <label class="form-label">Max</label> <input class="form-control"
+                                        placeholder="$1,0000" type="number"> </div>
+                                <!-- col end.// -->
+                            </div> <!-- row end.// --> <button class="btn btn-light w-100" type="button">Apply</button>
+                        </div> <!-- card-body.// -->
+                    </div>
+                </article> <!-- filter-group // -->
+
+
+            </div>
+        </aside>
+
+        <div class="col-md-9">
+
+
+            <div class="row row-cols-xl-4 row-cols-lg-2 row-cols-md-2 ">
+
+                <div *ngFor="let prod of productos |filter:term | paginate: { itemsPerPage: 12, currentPage: page } "
+                    class="col-lg-3 col-sm-6 col-12 ">
+                    <div class="card card-product-grid">
+                        <a [routerLink]="['/productos/' +prod.id+'-'+prod.nombre]" class="img-wrap">
+                            <img *ngIf="prod.Imagenes.length > 0 else no_img"
+                                src="{{urlBase+ prod.Imagenes[0].nombre}}">
+                        </a>
+                        <ng-template #no_img>
+                            <img src="{{urlBase+ 'n'}}">
+                        </ng-template>
+                        <div class="info-wrap border-top">
+                            <a [routerLink]="['/productos/' +prod.id+'-'+prod.nombre]" class="title">{{prod.nombre}}</a>
+                            <strong class="price">{{prod.p_venta}}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente">
+            </pagination-controls>
+        </div>
+
+
+
+        <!--  <div class="mt-4" aria-label="Page navigation example text-dark ">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </div> -->
+    </div>
+
+</div>

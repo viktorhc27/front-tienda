@@ -1,0 +1,71 @@
+<div id="vc" class="container">
+
+    <div class="row">
+        <div class="col-md-6 ">
+            <div class="flexslider">
+                <ul class="slides">
+                    <li
+                        data-thumb="https://img.freepik.com/vector-premium/productos-alimenticios-productos-cocina-envasados-productos-supermercado-comida-enlatada-tarro-galletas-crema-batida-huevos-paquete-iconos-flat_102902-848.jpg?w=2000">
+                        <img src="https://img.freepik.com/vector-premium/productos-alimenticios-productos-cocina-envasados-productos-supermercado-comida-enlatada-tarro-galletas-crema-batida-huevos-paquete-iconos-flat_102902-848.jpg?w=2000"
+                            alt="img1" />
+                    </li>
+                    <li
+                        data-thumb="https://img.freepik.com/vector-premium/productos-alimenticios-productos-cocina-envasados-productos-supermercado-comida-enlatada-tarro-galletas-crema-batida-huevos-paquete-iconos-flat_102902-848.jpg?w=2000">
+                        <img src="https://img.freepik.com/vector-premium/productos-alimenticios-productos-cocina-envasados-productos-supermercado-comida-enlatada-tarro-galletas-crema-batida-huevos-paquete-iconos-flat_102902-848.jpg?w=2000"
+                            alt="img2" />
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+        <div *ngFor="let inf of info" class="col-md-6">
+
+            <h6>codigo:{{inf.codigo}}</h6>
+
+            <h1>{{inf.nombre}}</h1>
+            <h3>${{inf.p_venta}}</h3>
+            <form [formGroup]="form" (ngSubmit)="add_carrito()">
+                <div class="quantity buttons_added">
+                    <p>Cantidad.</p>
+                    <input type="button" value="-" class="minus">
+                    <input type="number"  placeholder="quantity" title="Qty" name="quantity" formControlName="quantity" class="input-text qty text" min="1" max="{{inf.stock}}">
+                    <!-- <input  step="1"  title="Qty" > -->
+                    <input type="button" value="+" class="plus">
+                
+                </div>
+                <div>
+                    <button type="submit" class="add btn btn-dark">Agregar</button>
+                </div>
+            </form>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Informacion
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the first item's accordion body.</strong>:
+                            <br>
+                            <p class="justify-content-start"> It is shown by
+                                default, until the collapse plugin adds the appropriate classes that we use
+                                to
+                                style each element. These classes control the overall appearance, as well as
+                                the
+                                showing and hiding via CSS transitions. You can modify any of this with
+                                custom
+                                CSS or overriding our default variables. It's also worth noting that just
+                                about
+                                any HTML can go within</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
