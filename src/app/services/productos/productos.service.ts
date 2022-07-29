@@ -21,5 +21,11 @@ export class ProductosService {
     return this.http.get(this.config.urlBase + "/" + this.controller + "detalles/" + element)
   }
 
+  searchTrack({ q }: ProductModel): Observable<any> {
+    return this.http.get(this.config.urlBase + "/" + this.controller + 'search/' + q+'/'+10)
+  }
 
+}
+export class ProductModel {
+  q!: string;
 }

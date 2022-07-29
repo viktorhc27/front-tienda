@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../../services/productos/productos.service'
 import { ConfigService } from 'src/app/utils/config.service';
+import { debounceTime, finalize, map, switchMap, tap } from 'rxjs/operators';
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -13,6 +14,10 @@ export class ProductosComponent implements OnInit {
   urlBase = 'http://localhost:3000/'
   searchTerm = '';
   term = '';
+
+  public isLoading = false;
+  public src!: string;
+  public data$: any;
   constructor(
     private _productosService: ProductosService
   ) { }
@@ -30,7 +35,16 @@ export class ProductosComponent implements OnInit {
 
     })
   }
+  search(value: any): any {
+    this.isLoading = true;
 
+    this.data$ = this._productosService.searchTrack({ q: value })
+      .pipe(
+        map(({ productos }) => productos),
+        finalize(() => this.isLoading = false)
+      )
+
+  }
 
 
 }

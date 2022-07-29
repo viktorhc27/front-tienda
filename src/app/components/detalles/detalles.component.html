@@ -28,10 +28,10 @@
             <form [formGroup]="form" (ngSubmit)="add_carrito()">
                 <div class="quantity buttons_added">
                     <p>Cantidad.</p>
-                    <input type="button" value="-" class="minus">
-                    <input type="number"  placeholder="quantity" title="Qty" name="quantity" formControlName="quantity" class="input-text qty text" min="1" max="{{inf.stock}}">
+                    <input type="button" value="-" id="minus" class="minus">
+                    <input type="number" title="Qty" name="quantity" id="quantity" value="1" formControlName="quantity" class="input-text qty text" min="1" max="{{inf.stock}}">
                     <!-- <input  step="1"  title="Qty" > -->
-                    <input type="button" value="+" class="plus">
+                    <input type="button" value="+" id="plus" class="plus">
                 
                 </div>
                 <div>

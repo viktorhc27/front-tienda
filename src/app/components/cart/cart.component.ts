@@ -31,9 +31,6 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.list_cart()
   }
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
   list_cart() {
     this.cart = []
     this.cart = JSON.parse(localStorage.getItem("cart") as string)

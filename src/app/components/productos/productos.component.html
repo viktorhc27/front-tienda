@@ -9,9 +9,27 @@
                 <span class="input-group-text">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
-                <input type="text" class="form-control" name="lorem" placeholder="Search" [(ngModel)]="term">
+                <input class="input-src" class="form-control" [ngClass]="{'loading':isLoading}" [spellcheck]="false"
+                    placeholder="Buscador" type="text" (ngModelChange)="search($event)" [(ngModel)]="src">
+
+
+            </div>
+            <div>
+                <ul class="list-group result">
+                    <li *ngFor="let item of data$ | async">
+                        <a class="list-group-item" [routerLink]="['/productos/' +item.id+'-'+item.nombre]">
+                            {{item.nombre}} | Precio: {{item.p_venta}}
+                        </a>
+                       <!--  <img *ngIf="item.Imagenes.length > 0 else no_img"
+                        src="{{urlBase + item.Imagenes[0].nombre}}">
+                        <ng-template #no_img>
+                            <img src="{{urlBase+ 'n'}}">
+                        </ng-template> -->
+                    </li>
+                </ul>
             </div>
         </div>
+
 
         <aside class="col-lg-3 col-sm-12 d-lg-block">
             <!-- COMPONENTS SIDEBAR -->
@@ -61,7 +79,7 @@
 
             <div class="row row-cols-xl-4 row-cols-lg-2 row-cols-md-2 ">
 
-                <div *ngFor="let prod of productos |filter:term | paginate: { itemsPerPage: 12, currentPage: page } "
+                <div *ngFor="let prod of productos | paginate: { itemsPerPage: 12, currentPage: page } "
                     class="col-lg-3 col-sm-6 col-12 ">
                     <div class="card card-product-grid">
                         <a [routerLink]="['/productos/' +prod.id+'-'+prod.nombre]" class="img-wrap">

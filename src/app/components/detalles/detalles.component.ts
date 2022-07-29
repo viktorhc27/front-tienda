@@ -5,6 +5,8 @@ import { CargarScriptsService } from 'src/app/services/cargar-scripts.service'
 import { CartService } from 'src/app/services/cart/cart.service';
 import { Cart } from 'src/app/models/cart'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-detalles',
   templateUrl: './detalles.component.html',
@@ -45,6 +47,9 @@ export class DetallesComponent implements OnInit {
   }
 
   add_carrito() {
+
+    console.log(this.form.value.quantity);
+
     for (let i = 0; i < this.info.length; i++) {
       this.carrito.push(new Cart(this.info[i].id, this.info[i].nombre/* , this.info[i].Imagenes[0].nombre */, this.form.value.quantity, this.info[i].p_venta))
 
@@ -59,8 +64,27 @@ export class DetallesComponent implements OnInit {
           localStorage.setItem('cart', JSON.stringify(result.cart))
         });
       }
-      this.carrito.splice(0,1)
+      this.carrito.splice(0, 1)
+
+
     }
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+    })
+
+    Toast.fire({
+      icon: 'success',
+      title: 'Producto Agregado a Carrito'
+    })
 
     // console.log(this.carrito)
   }
