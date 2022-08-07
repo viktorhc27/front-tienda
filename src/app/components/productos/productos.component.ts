@@ -31,7 +31,7 @@ export class ProductosComponent implements OnInit {
       for (let i = 0; i < result.data.length; i++) {
         this.productos.push(result.data[i])
       }
-      console.log(this.productos)
+     // console.log(this.productos)
 
     })
   }

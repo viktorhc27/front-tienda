@@ -1,19 +1,37 @@
 <nav id="nav" class="navbar navbar-expand-lg navbar-dark position-fixed bg-dark mb-3 ">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/logo.png" height="40" class="logo">
+            <img src="../../../assets/img/logo.png" height="70" class="logo">
         </a>
 
         <div class="order-lg-last flex-shrink-0">
 
-           <!--  <a href="#" class="btn btn-icon btn-dark">
+            <!--  <a href="#" class="btn btn-icon btn-dark">
                 <i class="fa fa-search"></i>
             </a> -->
-            <a [routerLink]="['/login']" class="btn btn-icon btn-dark">
+            <a *ngIf="user.length == 0; else logeado" [routerLink]="['/login']" class="btn btn-icon btn-dark">
                 <i class="fa fa-user"></i>
             </a>
+            <ng-template #logeado>
+                <div class="widget-header dropdown">
+                    <a class="btn btn-success btn-dark " data-bs-toggle="dropdown" aria-expanded="true">
+                        {{user[0].email}} <i class="fa-solid fa-caret-down"></i>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end "
+                        style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(0px, 28px);"
+                        data-popper-placement="bottom-end">
+                        <li> <a class="dropdown-item" href="#">Mi Perfil</a> </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        
+                        <li> <a (click)="cerrar()" class="dropdown-item">Cerrar Sesion</a> </li>
+                    </ul>
+                </div>
+            </ng-template>
             <a [routerLink]="['/cart']" class="btn btn-icon btn-primary">
-                <i class="fa fa-shopping-cart"></i> 
+                <i class="fa fa-shopping-cart">{{contador}}</i>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_main4"
                 aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
@@ -31,7 +49,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#"> Categorias </a>
                 </li>
-               <!--  <li class="nav-item dropdown">
+                <!--  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false"> Products </a>
                     <ul class="dropdown-menu">

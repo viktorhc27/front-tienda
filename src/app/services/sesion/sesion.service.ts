@@ -7,20 +7,15 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root'
 })
 export class SesionService {
-  id!: number
+  id: number
   token: string = "";
   email: string = "";
   nombre: string = "";
   imagen: string = "";
-  rol!: number;
+  rol: number;
 
   controller: string = "usuarios/"
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': this.token
-    })
-  }
+
   httpOptionsLogin = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -36,10 +31,28 @@ export class SesionService {
     this.email = localStorage.getItem('email') as string;
     this.id = parseInt(localStorage.getItem('id') as string);
     this.rol = parseInt(localStorage.getItem('rol') as string);
+
+  }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.token
+    })
   }
 
+
   login(credenciales: any): Observable<any> {
-    return this.http.post(this.config.urlBase + "/"+this.controller + 'login', credenciales);
+    return this.http.post(this.config.urlBase + "/" + this.controller + 'login', credenciales);
+  }
+
+  islogged(): Observable<any> {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.token
+      })
+    }
+    return this.http.get(this.config.urlBase + "/" + this.controller + 'islogged', this.httpOptions);
   }
   saveSesion(token: any, id: any, email: any, rol: any): void {
     localStorage.setItem('token', token);
@@ -54,10 +67,11 @@ export class SesionService {
   }
 
   clearSesion(): void {
-    this.cookie.delete('token');
-    this.cookie.delete('email');
-    this.cookie.delete('id');
-    this.cookie.delete('rol');
+    localStorage.removeItem('token')
+    localStorage.removeItem('email')
+    localStorage.removeItem('id')
+    localStorage.removeItem('rol')
+   
 
     this.email = "";
     this.id = 0;

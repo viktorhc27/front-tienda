@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         console.log(res);
         this._login.saveSesion(res.token, res.id, res.email, res.rol)
         if (res.rol == 1) {
-          this.router.navigate(['/home-admin/']);
+          this.router.navigate(['/productos']);
         } else {
           this.router.navigate(['/home']);
         }

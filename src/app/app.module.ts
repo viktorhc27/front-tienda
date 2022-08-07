@@ -21,6 +21,7 @@ import { DetallesComponent } from './components/detalles/detalles.component';
 import { CartComponent } from './components/cart/cart.component';
 import { RecargaDirective } from './directives/recarga.directive';
 import { LoginComponent } from './components/login/login.component';
+import { PagosComponent } from './components/pagos/pagos.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LoginComponent } from './components/login/login.component';
     DetallesComponent,
     CartComponent,
     RecargaDirective,
-    LoginComponent
+    LoginComponent,
+    PagosComponent
   ],
   imports: [
     BrowserModule,
